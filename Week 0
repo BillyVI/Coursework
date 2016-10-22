@@ -1,0 +1,2 @@
+a,b,c,d = input("Input：").strip().split()
+print(round(max((float(a)/float(b)),(float(c)/float(d))),3))
