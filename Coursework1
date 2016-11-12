@@ -1,0 +1,14 @@
+import random
+
+l = [int(x) for x in input().split()]                        ##O(n)
+
+'''randomly change the position of each element'''
+def change_position(l):
+    L = len(l)                                               ##O(1)
+    for i in range(L): 
+        r1 = int(random.random()*L)                          ##O(n)
+        r2 = int(random.random()*L)                          ##O(n)
+        l[r1],l[r2] = l[r2],l[r1]                            ##O(n)
+    return l
+
+print(change_position(l))
