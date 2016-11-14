@@ -1,0 +1,13 @@
+a = input('word: ')
+def del_vowels(a,i,t):
+    vowels=['a','e','i','o','u']
+    L = len(a)
+    while L > i:
+        if a[i] in vowels:
+            return del_vowels(a,i+1,t)
+        else:
+            t += a[i]
+            return del_vowels(a,i+1,t)           
+    return t
+   
+print(del_vowels(a,0,''))
