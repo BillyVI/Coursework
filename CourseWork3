@@ -1,0 +1,21 @@
+a = int(input("please input a positive integer: "))
+
+def max_square(a):
+    if a<0:
+        return "not a positive integer!"
+    else :
+        
+        '''can be square'''
+        for i in range(a//2+1) :                  ##O(n/2+1)
+            if i*i == a:                                 ##O(n/2+1)
+                return a
+            
+        '''use biggest i to find the highest perfect square'''
+        
+        while i>=0:                                   ##O(n/2+1)
+            if (i)*(i)< a:                                ##O(n/2+1)
+                return (i)*(i)
+            else:
+                i = i - 1                                 ##O(n/2+1)  
+       
+print(max_square(a))
