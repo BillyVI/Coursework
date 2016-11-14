@@ -1,0 +1,24 @@
+l = input("please input a list : ").split( )
+
+L = int(input("Low:"))
+R = int(input("High: "))
+
+def find_num(l,L,R):
+    le = len(l)
+    low = 0
+    high = le-1
+
+    while low <= high:
+        mid = (low+high)//2
+        m = int(l[mid])
+        if m>=L and m <= R:
+            return True
+        
+        elif m>R :
+            high = mid-1
+            
+        elif m<L :
+            low = mid+1
+    return False
+
+print(find_num(l,L,R))
