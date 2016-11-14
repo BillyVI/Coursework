@@ -1,0 +1,87 @@
+B = [[0,1,2],[1,2,3],[1,1,1]]
+C = [[1,1,1,1],[3,3,3,3],[1,1,1,1],[2,2,2,2]]
+r = range
+
+def add_MATRICES(a,b):
+    la=len(a)
+    lb=len(b)
+    '''find biggest matrices and create a matrices N to sort the result'''
+    '''traverse the MATRICES '''
+    if la > lb:
+        N = [[0]*la for row in r(la)]           
+        for i in r(lb):                                 
+            for j in r( lb):                            
+                N[i][j]= a[i][j]+b[i][j]             
+        '''add the remains'''
+        for i in r(lb,la): 
+            for j in r(lb,la):                          
+                N[i][j]= a[i][j] 
+    else:
+        N = [[0]*lb for row in r(lb)]                     
+        for i in r(la):                             
+            for j in r(la):                         
+                N[i][j]= a[i][j]+b[i][j]               
+        for i in r(la,lb):          
+            for j in r(la,lb):
+                N[i][j]= b[i][j]
+    return N
+
+def subtract_MATRICES(a,b):
+    la=len(a)
+    lb=len(b)
+    if la > lb:
+        N = [[0]*la for row in r(la)]
+        for i in r(lb):
+            for  j in r(lb):
+                N[i][j]= a[i][j]-b[i][j]
+        for i in r(lb,la):
+            for j in r(lb,la):
+                N[i][j]= a[i][j]
+    else:
+        N = [[0]*lb for row in r(lb)]
+        for i in r(la):
+            for j in r(la):
+                N[i][j]= a[i][j]-b[i][j]
+        for i in r(la,lb):
+            for j in r(la,lb):
+                N[i][j]= -b[i][j]
+    return N
+
+def multiple_MATRICES (int,b):
+    ''' when parameters is int'''
+    if type(b)==int:
+        la=len(a)
+        N = [[b]*la for row in r(la)]
+        for i in r(la):
+            for j in r(la):
+                N[i][j]= N[i][j]*a[i][j]
+    elif type(a)==int:
+        lb=len(b)
+        N = [[a]*lb for row in r(lb)]
+        for i in r(lb):
+            for j in r(lb):
+                N[i][j]= N[i][j]*b[i][j]
+                
+    ''' MATRICES * MATRICES'''
+    else :
+        la=len(a)
+        lb=len(b)
+        if la > lb:
+            N = [[0]*la for row in r(la)]
+            for i in r(lb):
+                for j in r(lb):
+                    N[i][j]= a[i][j]*b[i][j]
+        else:
+            N = [[0]*lb for row in r(lb)]
+            for i in r(la):
+                for j in r(la):
+                    N[i][j]= a[i][j]*b[i][j]
+    return N 
+
+A1 =add_MATRICES(B,C)
+A2 = multiple_MATRICES(B,C)
+A3 = multiple_MATRICES(2,A1)
+A = subtract_MATRICES(A2,A3)
+
+print("A:",A)
+
