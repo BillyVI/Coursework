@@ -1,0 +1,19 @@
+a = int(input("input number: "))
+
+def is_prime(a,i):
+    ##print(i)
+    if a<0:
+        return False
+    elif a <=1:
+         return ' is a prime'
+    else:
+        while a > i:
+            if a%i == 0 :
+                return 'Not Prime'
+            else:
+                return is_prime(a,i+1)
+
+    return 'Prime'
+
+print(is_prime(a,2))
+
