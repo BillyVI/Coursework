@@ -3,6 +3,7 @@ import random
 l = [int(x) for x in input().split()]                        ##O(n)
 
 '''randomly change the position of each element'''
+
 def change_position(l):
     L = len(l)                                               ##O(1)
     for i in range(L): 
