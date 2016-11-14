@@ -1,0 +1,17 @@
+MAX_SQUARE(A) 
+    IF a<0                                                                  O(1)
+        return "not a positive integer!”            
+
+   ELSE 
+‘’’ if a is a square’’’
+        for i in range(a//2+1)                                        O(n//2)
+            IF i*i = a                                                      
+                RETURN a                                               O(n//2)
+           
+        WHILE i>=0                                                       O(n//2)
+            IF (i)*(i)< a                                                     
+                RETURN (i)*(i)                                          O(n//2)
+            ELSE                                                               
+                i <- i - 1                                                       O(n//2)
+                
+Time complexity = O(n)
