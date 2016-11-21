@@ -1,17 +1,18 @@
+import math
 a = int(input("please input a positive integer: "))
 
 def max_square(a):
     if a<0:
         return "not a positive integer!"
-    else :
         
-        '''can be square'''
-        for i in range(a//2+1) :                  ##O(n/2+1)
-            if i*i == a:                                 ##O(n/2+1)
-                return a
+'''if a is a square,return a'''
+    elif math.sqrt(a)%1==0:
+        return a
+    
             
-        '''use biggest i to find the highest perfect square'''
-        
+'''a is not a square, find the biggest i where i*i just smaller than a'''
+    else:
+        i = a//2+1
         while i>=0:                                   ##O(n/2+1)
             if (i)*(i)< a:                                ##O(n/2+1)
                 return (i)*(i)
