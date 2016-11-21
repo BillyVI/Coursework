@@ -1,0 +1,69 @@
+class vertex:
+    def __init__(self,key):
+        self.key = key
+        self.edge = []
+    def getKey(self):
+        return self.key
+    def getEdge(self):
+        return self.edge
+    def add_neibour(self,key):
+        if key in self.edge:
+            print("already in edge")
+        else:
+            self.edge.append(key)
+            return self.edge
+
+class graph1:
+    def __init__(self):
+        self.keyset={}
+    def addVer(self,key):
+        key_index = vertex(key)
+        self.keyset[key]=key_index
+        print(key_index.getKey())
+        print(key_index.getEdge())
+        return key
+    def addNb(self,key1,key2):    
+        if key1 not in self.keyset:
+            self.addVer(key1)
+        if key2 not in self.keyset:
+            self.addVer(key2)
+        self.keyset[key1].add_neibour(key2)
+        self.keyset[key2].add_neibour(key1)
+    def display(self):
+        for i in self.keyset:
+            print(i,self.keyset[i].getEdge())
+    def DFS(self,v):
+        s=[]
+        visit = []
+        s.append(v)
+        while s!=[]:
+            u = s.pop()
+            if u not in visit:
+                visit.append(u)
+                for i in self.keyset[u].edge:
+                    s.append(i)
+        return visit
+
+
+    def BFS(self,v):
+        s=[]
+        visit = []
+        s.insert(0,v)
+        while s!=[]:
+            u = s.pop()
+            if u not in visit:
+                visit.append(u)
+                for i in self.keyset[u].edge:
+                    s.insert(0,i)
+        return visit
+g = graph1()
+g.addVer(1)
+g.addVer(2)
+g.addVer(3)
+g.addNb(1,2)
+g.addNb(2,3)
+g.addNb(4,3)
+g.display()
+print(g.DFS(2))
+print(g.BFS(2))
+        
