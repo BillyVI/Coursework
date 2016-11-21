@@ -1,4 +1,4 @@
-l = input("please input a list : ").split( )
+l = input("please input a ordered list : ").split( )
 
 L = int(input("Low:"))
 R = int(input("High: "))
@@ -11,12 +11,16 @@ def find_num(l,L,R):
     while low <= high:
         mid = (low+high)//2
         m = int(l[mid])
+        
+     '''whether middle number in [L,R]'''
         if m>=L and m <= R:
             return True
-        
+            
+        '''move to the left'''
         elif m>R :
             high = mid-1
             
+            '''move to the right'''
         elif m<L :
             low = mid+1
     return False
