@@ -1,12 +1,15 @@
 a = int(input("input number: "))
 
 def is_prime(a,i):
-    ##print(i)
+    
     if a<0:
         return False
-    elif a <=1:
+    elif a <=3:
          return ' is a prime'
     else:
+    
+    '''recursively check whether 'a' can divided by number under a'''
+    
         while a > i:
             if a%i == 0 :
                 return 'Not Prime'
