@@ -1,17 +1,27 @@
 num = int(input("input a factorial number:")) 
 
+‘’’factorial number less than 5’’’
+
 if num==0: 
     print("one zero!") 
 elif num<0:
     print("not a valid number")
+elif num<5:
+    print('no zero!’)
+    
+‘’’factorial number no less than 5’’’  
+
 else :
-    total = 0
     five = 0
- 
-    for i in range(1,num+1):
-        if i%5==0:
-            while i%5 == 0 and i != 1: 
-                i = i/5 
-                five = five+1
+    i=5
+    
+‘’’count 5 in number less than the factorial number’’’
+
+    while i<=num:
+        k = i 
+        while i%5 == 0 and i != 1 :
+            i = i/5
+            five = five+1
+        i = k+5
   
     print(five)
