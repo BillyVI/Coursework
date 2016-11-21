@@ -24,13 +24,22 @@ class List(object):
               
       def delete(self,n):
           m = self.head
+          '''link list not null'''
           while m!= None:
+          
+              '''find the node n'''
               if m.value==n :
+              
+              '''delete the node'''
+              
+                  '''if n is not the first node'''
                   if m.prev!=None:
                       m.prev.next = m.next
                       if m.next !=None:
                           m.next.prev = m.prev
                       return l.display()
+                      
+                  '''if n is the first node'''
                   else:
                       self.head = m.next
                       m.next.prev = None
