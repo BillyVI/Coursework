@@ -70,12 +70,18 @@ def multiple_MATRICES (int,b):
             N = [[0]*la for row in r(la)]
             for i in r(lb):
                 for j in r(lb):
-                    N[i][j]= a[i][j]*b[i][j]
+                    for k in r(lb):
+                        sum = sum+ a[i][k]*b[k][j]
+                    N[i][j]=sum
+                    sum = 0
         else:
             N = [[0]*lb for row in r(lb)]
             for i in r(la):
                 for j in r(la):
-                    N[i][j]= a[i][j]*b[i][j]
+                    for k in r(la):
+                        sum = sum+ a[i][k]*b[k][j]
+                    N[i][j]=sum
+                    sum = 0
     return N 
 
 A1 =add_MATRICES(B,C)
