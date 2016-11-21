@@ -1,0 +1,79 @@
+ver = input("vertex: ").split(' ')
+adj_matrix = [[0]*len(ver) for i in range(len(ver))]
+print(adj_matrix)
+
+def add_ver(ver_name,ver):
+    if ver_name in ver:
+        print("vertex exist!")
+        return False
+    else:
+        ver.append(ver_name)
+    for i in range(len(ver)-1):
+        adj_matrix[i].append(0)
+    adj_matrix.append([0]*len(ver))
+    print(adj_matrix)
+    
+def add_edge(ver1,ver2,ver):
+    if ver1 in ver and ver2 in ver:
+  
+        for i in range(len(ver)):
+            if ver[i] == ver1:
+                j = i
+            if ver[i] == ver2:
+                k = i
+        adj_matrix[j][k]=1
+        adj_matrix[k][j]=1
+        
+    else:
+        print("vertex not exist!")
+        return False
+def DFS(adj_matrix,v,ver):
+    for p in range(len(ver)):
+        if ver[p] == v:
+            k = p
+    
+    visit = []
+    s = []
+    s.append(k)
+    while s!=[]:
+        u = s.pop()
+        if u not in visit:
+            visit.append(u)
+            
+            for i in range(len(adj_matrix)):
+                if adj_matrix[u][i]!=0:
+                    s.append(i)
+    for j in visit:
+        print(ver[j])
+
+     
+def BFS(adj_matrix,v,ver):
+    for p in range(len(ver)):
+        if ver[p] == v:
+            k = p
+    
+    visit = []
+    s = []
+    s.insert(0,k)
+    while s!=[]:
+        u = s.pop()
+        if u not in visit:
+            visit.append(u)
+            
+            for i in range(len(adj_matrix)):
+                if adj_matrix[u][i]!=0:
+                    s.insert(0,i)
+    for j in visit:
+        print(ver[j])    
+            
+            
+        
+    
+ver_name = input("add vertex: ")
+add_ver(ver_name,ver)
+for i in range(3):
+    ver1 = input("from: ")
+    ver2 = input("to: ")
+    add_edge(ver1,ver2,ver)
+DFS(adj_matrix,'2',ver)
+BFS(adj_matrix,'2',ver)
