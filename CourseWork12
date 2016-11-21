@@ -1,0 +1,46 @@
+class binary_tree(object):
+    def __init__(self,value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+
+def Insert(tree,item):
+    if tree==None:
+        tree = binary_tree(item)
+    else:
+        if item < tree.value:
+            if tree.left==None:
+                tree.left = binary_tree(item)
+            else:
+                Insert(tree.left,item)
+        else:
+            if tree.right==None:
+                tree.right = binary_tree(item)
+            else:
+                Insert(tree.right,item)
+    return tree
+
+def InOrder(tree):
+    s = []
+    if tree == None:
+        return []
+    node = tree
+    while node or s:
+        while node:
+            s.append(node)
+            node = node.left
+        node = s.pop()
+        print(node.value)
+        node = node.right
+        
+if __name__=='__main__':
+    t =  None
+    a = input("input the tree: ").split(' ')
+    for i in a:
+        t = Insert(t,int(i))
+    InOrder(t)
+    
+        
+    
+    
