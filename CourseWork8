@@ -7,7 +7,7 @@ def del_vowels(a,i,t):
     '''check each alphabet in the sentence'''
     while L > i:
     
-         '''if not vowels add to the list 't' and output otherwise skip it''' 
+         '''if not vowels add to the 't' and output otherwise skip it''' 
         if a[i] in vowels:
             return del_vowels(a,i+1,t)
         else:
