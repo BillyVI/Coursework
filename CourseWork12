@@ -6,15 +6,26 @@ class binary_tree(object):
 
 
 def Insert(tree,item):
+##compare to each node, bigger add to the left, smaller add to the right
+
+## if tree has no node, create a node
     if tree==None:
         tree = binary_tree(item)
     else:
+ ##if the value of the node inserted to the tree smaller than tree node value, go to the left side
         if item < tree.value:
+        
+         ##if no left child of the node, add to the tree
             if tree.left==None:
                 tree.left = binary_tree(item)
             else:
                 Insert(tree.left,item)
+                
+       
+       ##if the value of the node inserted to the tree bigger than tree node value, go to the right side
         else:
+        
+        ##if no right child of the node, add to the tree
             if tree.right==None:
                 tree.right = binary_tree(item)
             else:
@@ -26,6 +37,8 @@ def InOrder(tree):
     if tree == None:
         return []
     node = tree
+    
+    ##push to the stack if left is not none, else pop the node and print it and do the same to its right tree
     while node or s:
         while node:
             s.append(node)
