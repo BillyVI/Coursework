@@ -3,7 +3,7 @@ MAX_SQUARE(A)
         return "not a positive integer!”            
 
    ELSE 
-‘’’ if a is a square’’’
+## if a is a square 
         for i in range(a//2+1)                                        O(n//2)
             IF i*i = a                                                      
                 RETURN a                                               O(n//2)
