@@ -2,13 +2,13 @@ import random
 
 l = [int(x) for x in input().split()]                        ##O(n)
 
-'''randomly change the position of each element'''
+##randomly change the position of each element 
 
 def change_position(l):
     L = len(l)                                               ##O(1)
     for i in range(L): 
     
-‘’’create two random number and swap the index’’’
+ ##create two random number and swap the index 
 
         r1 = int(random.random()*L)                          ##O(n)
         r2 = int(random.random()*L)                          ##O(n)
