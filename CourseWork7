@@ -8,7 +8,7 @@ def is_prime(a,i):
          return ' is a prime'
     else:
     
-    '''recursively check whether 'a' can divided by number under a'''
+    ##recursively check whether 'a' can divided by number under a 
     
         while a > i:
             if a%i == 0 :
