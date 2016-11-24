@@ -3,19 +3,22 @@ adj_matrix = [[0]*len(ver) for i in range(len(ver))]
 print(adj_matrix)
 
 def add_ver(ver_name,ver):
+ ##   add a node not exit 
     if ver_name in ver:
         print("vertex exist!")
         return False
     else:
         ver.append(ver_name)
+        
+    ##expand matrix
     for i in range(len(ver)-1):
         adj_matrix[i].append(0)
     adj_matrix.append([0]*len(ver))
     print(adj_matrix)
     
 def add_edge(ver1,ver2,ver):
-    if ver1 in ver and ver2 in ver:
-  
+    ##find the node and change the value of the matrix
+    if ver1 in ver and ver2 in ver:  
         for i in range(len(ver)):
             if ver[i] == ver1:
                 j = i
@@ -27,7 +30,9 @@ def add_edge(ver1,ver2,ver):
     else:
         print("vertex not exist!")
         return False
+    
 def DFS(adj_matrix,v,ver):
+    ## find the index of certain node
     for p in range(len(ver)):
         if ver[p] == v:
             k = p
@@ -40,12 +45,16 @@ def DFS(adj_matrix,v,ver):
         if u not in visit:
             visit.append(u)
             
+            ## find neighbor
             for i in range(len(adj_matrix)):
                 if adj_matrix[u][i]!=0:
                     s.append(i)
+                    
+    l  =[]
+    ##return the node
     for j in visit:
-        print(ver[j])
-
+        l.append(ver[j])
+    return l
      
 def BFS(adj_matrix,v,ver):
     for p in range(len(ver)):
@@ -63,8 +72,10 @@ def BFS(adj_matrix,v,ver):
             for i in range(len(adj_matrix)):
                 if adj_matrix[u][i]!=0:
                     s.insert(0,i)
+    l  =[]
     for j in visit:
-        print(ver[j])    
+        l.append(ver[j])
+    return l   
             
             
         
@@ -77,3 +88,11 @@ for i in range(3):
     add_edge(ver1,ver2,ver)
 DFS(adj_matrix,'2',ver)
 BFS(adj_matrix,'2',ver)
+
+text1 = open("DFS.txt", "w")
+text1.write('DFS: '+str(DFS(adj_matrix,'2',ver)))
+text1.close()
+text2 = open("BFS.txt", "w")
+text2.write('BFS: '+str(BFS(adj_matrix,'2',ver)))
+text2.close()
+
