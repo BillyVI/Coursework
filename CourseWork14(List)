@@ -2,13 +2,10 @@ class vertex:
     def __init__(self,key):
         self.key = key
         self.edge = []
-        
     def getKey(self):
         return self.key
-        
     def getEdge(self):
         return self.edge
-        
     def add_neighbor(self,key):
         if key in self.edge:
             print("already in edge")
@@ -20,21 +17,18 @@ class graph1:
     def __init__(self):
         ##store key and its vertex information
         self.keyset={}
-        
     def addVer(self,key):
         key_index = vertex(key)
         self.keyset[key]=key_index
-        print(key_index.getKey())
-        print(key_index.getEdge())
         return key
-        
-    def addNb(self,key1,key2):    
-    ## create node not exist in the graph
+    
+    def addNb(self,key1,key2):
+        ## create node not exist in the graph
         if key1 not in self.keyset:
             self.addVer(key1)
         if key2 not in self.keyset:
             self.addVer(key2)
-            ##add information to neighbor
+        ##add information to neighbor
         self.keyset[key1].add_neighbor(key2)
         self.keyset[key2].add_neighbor(key1)
         
@@ -43,7 +37,7 @@ class graph1:
             print(i,self.keyset[i].getEdge())
             
     def DFS(self,v):
-    ## find neighbor according to the start node
+        ## find neighbor according to the start node
         s=[]
         visit = []
         s.append(v)
@@ -52,7 +46,7 @@ class graph1:
             if u not in visit:
                 visit.append(u)
                 for i in self.keyset[u].edge:
-                 ##add not visit neighbors of the node
+                    ##add not visit neighbors of the node
                     s.append(i)
         return visit
 
@@ -78,7 +72,6 @@ g.addNb(4,3)
 g.display()
 print(g.DFS(2))
 print(g.BFS(2))
-        
 
 text1 = open("DFS.txt", "w")
 text1.write('DFS: '+str(g.DFS(2)))
