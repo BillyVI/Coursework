@@ -12,15 +12,15 @@ def find_num(l,L,R):
         mid = (low+high)//2
         m = int(l[mid])
         
-     '''whether middle number in [L,R]'''
+     ##whether middle number in [L,R] 
         if m>=L and m <= R:
             return True
             
-        '''move to the left'''
+        ##move to the left 
         elif m>R :
             high = mid-1
             
-            '''move to the right'''
+           ##move to the right 
         elif m<L :
             low = mid+1
     return False
