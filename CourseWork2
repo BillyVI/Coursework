@@ -7,7 +7,7 @@ if num==0:
 elif num<0:
     print("not a valid number")
 elif num<5:
-    print('no zero!’)
+    print('no zero!')
     
 ##factorial number no less than 5  
 
