@@ -1,5 +1,5 @@
 B = [[0,1,2],[1,2,3],[1,1,1]]
-C = [[1,1,1,1],[3,3,3,3],[1,1,1,1],[2,2,2,2]]
+C = [[1,1,1],[3,3,3],[1,1,1]]
 r = range
 
 def add_MATRICES(a,b):
@@ -13,11 +13,11 @@ def add_MATRICES(a,b):
         
        ## add each element in two matrix 
         for i in r(lb):                                 
-            for j in r( lb):                            
+            for j in r(lb):                            
                 N[i][j]= a[i][j]+b[i][j]             
                 
         ##copy the remain number into result matrix 
-        for i in r(lb,la): 
+        for i in r(lb,la):
             for j in r(lb,la):                          
                 N[i][j]= a[i][j] 
     else:
@@ -61,13 +61,13 @@ def subtract_MATRICES(a,b):
                 N[i][j]= -b[i][j]
     return N
 
-def multiple_MATRICES (int,b):
+def multiple_MATRICES (a,b):
     ## when parameters is int, and create an int matrix 
     if type(b)==int:
         la=len(a)
         N = [[b]*la for row in r(la)]
         
-        '''multiple the figure and each element in matrix 
+        ##multiple the figure and each element in matrix 
         for i in r(la):
             for j in r(la):
                 N[i][j]= N[i][j]*a[i][j]
@@ -90,21 +90,23 @@ def multiple_MATRICES (int,b):
             
        ##multiple matrix and matrix  
             for i in r(lb):
+                sum = 0
                 for j in r(lb):
                     for k in r(lb):
                         sum = sum+ a[i][k]*b[k][j]
                     N[i][j]=sum
-                    sum = 0
+                    
         else:
             N = [[0]*lb for row in r(lb)]
             
            ##multiple matrix and matrix  
             for i in r(la):
                 for j in r(la):
+                    sum = 0
                     for k in r(la):
                         sum = sum+ a[i][k]*b[k][j]
                     N[i][j]=sum
-                    sum = 0
+                    
     return N 
 
 A1 =add_MATRICES(B,C)
@@ -113,4 +115,3 @@ A3 = multiple_MATRICES(2,A1)
 A = subtract_MATRICES(A2,A3)
 
 print("A:",A)
-
