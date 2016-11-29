@@ -1,0 +1,116 @@
+class vertex:
+    def __init__(self,key):
+        ## vertex= | prev | tw | key | edge |-->{key:weight}
+        
+        self.key = key
+        self.edge = {}
+        self.tw = 100000
+        self.prev = None
+        
+    def getKey(self):
+        return self.key
+        
+    def getEdge(self):
+        return self.edge
+        
+    def add_neibour(self,key,weight):
+        if key in self.edge:
+            print("already in edge")
+        else:
+            self.edge[key]=weight
+            return self.edge.items()
+            
+    def getTw(self):
+        return self.tw
+        
+    def getPrev(self):
+        return self.prev
+
+class graph1:
+    def __init__(self):
+        ## keyset = {key: key's vertex}
+        self.keyset={}
+        
+    def addVer(self,key):
+        ## create a vertex and store it in dictionary 
+        key_index = vertex(key)
+        self.keyset[key]=key_index
+        return key
+    
+    def addNb(self,key1,key2,weight):
+        ## create nodes if not exits 
+        if key1 not in self.keyset:
+            self.addVer(key1)
+        if key2 not in self.keyset:
+            self.addVer(key2)
+        ## undirected graph 
+        self.keyset[key1].add_neibour(key2,weight)
+        self.keyset[key2].add_neibour(key1,weight)
+        
+    def display(self):
+        ## display key and its neighbor and weight
+        for i in self.keyset:
+            print(i,self.keyset[i].getEdge())
+
+    def Dijkstra(self,s,d):
+        
+        if s not in self.keyset or d not in self.keyset:
+            return False
+        
+        ## both s and d exist in the graph
+        else:
+            v = s
+            visited = []
+            ## first node have no path length
+            self.keyset[v].tw = 0
+
+            ## stop when reach the destination
+            while v!=d:
+                ## find neighbor node
+                for u in self.keyset[v].edge.keys():
+                    ## find the minimum length
+                    
+                    ## some node reached u and changed its tw and prev, if this node reach u and the lengh is smaller, update it
+                    if self.keyset[v].tw+self.keyset[v].edge[u]<self.keyset[u].tw:
+                        self.keyset[u].tw = self.keyset[v].tw + self.keyset[v].edge[u]
+                        self.keyset[u].prev = v
+                        
+                ## add the node in to visited because all the length have been update
+                visited.append(v)
+
+                ## update other nodes' that not in visited 
+                mini = 10000
+                for n in self.keyset.keys():
+                    if n not in visited and self.keyset[n].tw < mini:
+                        v = n
+                        mini = self.keyset[n].tw
+            
+            l=[]
+            def output(s,d,l): 
+                for m in self.keyset.keys():
+                    ##print(m,self.keyset[m].prev)
+                    ## find path from the destination
+                    if m==d : 
+                        l.insert(0,m)
+                        ## reach the source
+                        if self.keyset[m].prev==None:
+                            if s!=d:
+                                print('can not reach')
+                            else:
+                                print(l)
+                        else:
+                            output(s,self.keyset[m].prev,l)
+                        
+            output(s,d,l)
+            
+g = graph1()
+g.addVer(1)
+g.addVer(2)
+g.addVer(3)
+g.addNb(1,2,2)
+g.addNb(2,3,0)
+g.addNb(4,3,4)
+g.addNb(4,2,2)
+g.addNb(4,1,5)
+g.display()
+g.Dijkstra(1,4)
